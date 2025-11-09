@@ -1,0 +1,433 @@
+\documentclass[12pt, a4paper]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ukrainian]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{booktabs} % For better tables
+\geometry{left=2cm, right=2cm, top=2cm, bottom=2cm}
+
+% Define quote environment for problem statements
+\newenvironment{problem}[1]
+  {\begin{quote}\textbf{Задача #1. }\itshape}
+  {\end{quote}}
+
+\begin{document}
+
+\title{Розв'язання Практичних Робіт з ІСМІТ\\(Варіант 6)}
+\author{Студент групи КН-XX}
+\date{}
+\maketitle
+
+\section*{Частина 1: Методичні вказівки}
+
+\subsection*{Практична робота № 1. Елементи комбінаторики}
+\small(Задачі 6, 7, 8, 9, 10)
+
+\begin{problem}{6}
+Групу з 20 студентів потрібно розділити на 3 бригади, за умови, що в першу бригаду повинні входити 3 людини, в другу 5 і в третю 12. Скількома способами це можливо виконати?
+\end{problem}
+\textbf{Розв'язання:}
+Загальна кількість способів:
+$$N = C_{20}^{3} \cdot C_{17}^{5} \cdot C_{12}^{12} = \frac{20!}{3! \cdot 17!} \cdot \frac{17!}{5! \cdot 12!} \cdot 1 = \frac{20!}{3! \cdot 5! \cdot 12!}$$
+Обчислимо:
+$$C_{20}^{3} = \frac{20 \cdot 19 \cdot 18}{3 \cdot 2 \cdot 1} = 1140$$
+$$C_{17}^{5} = \frac{17 \cdot 16 \cdot 15 \cdot 14 \cdot 13}{5 \cdot 4 \cdot 3 \cdot 2 \cdot 1} = 6188$$
+$$C_{12}^{12} = 1$$
+$$N = 1140 \cdot 6188 \cdot 1 = 7,054,320$$
+\textbf{Відповідь:} 7,054,320 способів.
+
+\begin{problem}{7}
+Скільки шестизначних чисел можливо створити з цифр 1, 2, 3, 4, 5, 6, 7, 8, 9, якщо кожне число повинно складатися з 3 парних и 3 непарних цифр, причому жодна цифра не входить у число більше одного разу?
+\end{problem}
+\textbf{Розв'язання:}
+1. Парні цифри: \{2, 4, 6, 8\} (всього 4). Непарні цифри: \{1, 3, 5, 7, 9\} (всього 5).
+2. Обрати 3 парні з 4-х: $C_{4}^{3} = 4$. Обрати 3 непарні з 5-ти: $C_{5}^{3} = 10$.
+3. Кількість способів вибрати 6 цифр: $N_{\text{вибір}} = C_{4}^{3} \cdot C_{5}^{3} = 4 \cdot 10 = 40$.
+4. Кількість перестановок з 6 цифр: $P_6 = 6! = 720$.
+5. Загальна кількість чисел: $N = N_{\text{вибір}} \cdot P_6 = 40 \cdot 720 = 28,800$.
+\textbf{Відповідь:} 28,800 чисел.
+
+\begin{problem}{8}
+Скільки різних чисел можливо отримати, переставляючи числа 2 2 3 3 3 4 4 4 5 5?
+\end{problem}
+\textbf{Розв'язання:}
+Це перестановки з повтореннями. Всього $n=10$.
+$n_1 (2) = 2, n_2 (3) = 3, n_3 (4) = 3, n_4 (5) = 2$.
+$$N = \frac{10!}{2! \cdot 3! \cdot 3! \cdot 2!} = \frac{3,628,800}{2 \cdot 6 \cdot 6 \cdot 2} = \frac{3,628,800}{144} = 25,200$$
+\textbf{Відповідь:} 25,200 різних чисел.
+
+\begin{problem}{10}
+У пасажирському потязі 9 вагонів. Скількома способами можливо розсадити в потязі 4 людей за умови, що всі вони повинні їхати в різних вагонах?
+\end{problem}
+\textbf{Розв'язання:}
+Це задача на розміщення без повернення (кількість розміщень з 9 по 4):
+$$A_{9}^{4} = 9 \cdot 8 \cdot 7 \cdot 6 = 3,024$$
+\textbf{Відповідь:} 3,024 способів.
+
+\subsection*{Практична робота № 2. Класичне визначення ймовірності}
+\small(Задачі 6, 7, 8, 9, 10)
+
+\begin{problem}{6}
+Навмання вибрано натуральне число, що не перевищує 20. Яка ймовірність того, що це число кратне 5.
+\end{problem}
+\textbf{Розв'язання:}
+Загальна кількість чисел $n = |\Omega| = 20$.
+Сприятливі події $A = \{5, 10, 15, 20\}$, $k = |A| = 4$.
+$$p(A) = \frac{k}{n} = \frac{4}{20} = 0.2$$
+\textbf{Відповідь:} 0.2.
+
+\begin{problem}{7}
+Дано три відрізки довжиною 2, 5, 6, 10. Яка ймовірність того, що з трьох навмання взятих відрізків можна побудувати трикутник.
+\end{problem}
+\textbf{Розв'язання:}
+Загальна кількість способів $n = C_{4}^{3} = 4$.
+Комбінації:
+\{2, 5, 6\} $\implies 2+5 > 6$ (Так).
+\{2, 5, 10\} $\implies 2+5 \ngtr 10$ (Ні).
+\{2, 6, 10\} $\implies 2+6 \ngtr 10$ (Ні).
+\{5, 6, 10\} $\implies 5+6 > 10$ (Так).
+Кількість сприятливих подій $k = 2$.
+$$p(A) = \frac{k}{n} = \frac{2}{4} = 0.5$$
+\textbf{Відповідь:} 0.5.
+
+\begin{problem}{8}
+В урні 4 білих та 2 чорних кульки. З цієї урни навмання взято 2 кульки. Знайти ймовірність того, що вони різного кольору.
+\end{problem}
+\textbf{Розв'язання:}
+Загальна кількість способів $n = C_{6}^{2} = \frac{6 \cdot 5}{2} = 15$.
+Кількість сприятливих способів (1 біла з 4 ТА 1 чорна з 2):
+$k = C_{4}^{1} \cdot C_{2}^{1} = 4 \cdot 2 = 8$.
+$$p(A) = \frac{k}{n} = \frac{8}{15}$$
+\textbf{Відповідь:} 8/15.
+
+\begin{problem}{9}
+У групі 30 студентів, з яких 10 відмінників. Група наугад розділений на 2 частини (по 15). Знайти ймовірність того, що в кожній частині по 5 відмінників.
+\end{problem}
+\textbf{Розв'язання:}
+Загальна кількість способів $n = C_{30}^{15}$.
+Сприятливі способи (5 відмінників з 10 ТА 10 не-відмінників з 20):
+$k = C_{10}^{5} \cdot C_{20}^{10}$.
+$$p(A) = \frac{C_{10}^{5} \cdot C_{20}^{10}}{C_{30}^{15}} = \frac{252 \cdot 184,756}{155,117,520} \approx 0.299$$
+\textbf{Відповідь:} $\frac{C_{10}^{5} \cdot C_{20}^{10}}{C_{30}^{15}} \approx 0.299$.
+
+\begin{problem}{10}
+У каталозі є 7 командних файлів і 4 текстові файли. Випадково було знищено 6 файлів. Яка ймовірність того, що було знищено 3 командні і 3 текстові файли?
+\end{problem}
+\textbf{Розв'язання:}
+Всього 11 файлів. Загальна кількість способів $n = C_{11}^{6} = 462$.
+Сприятливі способи (3 командні з 7 ТА 3 текстові з 4):
+$k = C_{7}^{3} \cdot C_{4}^{3} = 35 \cdot 4 = 140$.
+$$p(A) = \frac{k}{n} = \frac{140}{462} = \frac{10}{33}$$
+\textbf{Відповідь:} 10/33.
+
+\subsection*{Практична робота № 3. Геометрична ймовірність, теореми...}
+\small(Задачі 6, 7, 8, 9, 10)
+
+\begin{problem}{6}
+На стелажі... 15 підручників, 5 з них переплетені. Беруть 3. Знайти ймовірність того, що хоча б один... буде переплетений (подія А).
+\end{problem}
+\textbf{Розв'язання:}
+Знаходимо протилежну подію $\overline{A}$ (жоден не переплетений).
+$n = C_{15}^{3} = 455$.
+$k(\overline{A}) = C_{10}^{3} = 120$.
+$$p(\overline{A}) = \frac{120}{455} = \frac{24}{91}$$
+$$p(A) = 1 - p(\overline{A}) = 1 - \frac{24}{91} = \frac{67}{91}$$
+\textbf{Відповідь:} 67/91.
+
+\begin{problem}{7}
+Два сигналізатори. $P(A) = 0.95$, $P(B) = 0.9$. Знайти: а) лише один спрацює; б) хоча б один спрацює.
+\end{problem}
+\textbf{Розв'язання:}
+$P(\overline{A}) = 0.05$, $P(\overline{B}) = 0.1$.
+a) $P(\text{лише один}) = P(A \cdot \overline{B}) + P(\overline{A} \cdot B) = (0.95 \cdot 0.1) + (0.05 \cdot 0.9) = 0.095 + 0.045 = 0.14$.
+б) $P(\text{жоден}) = P(\overline{A}) \cdot P(\overline{B}) = 0.05 \cdot 0.1 = 0.005$.
+$P(\text{хоча б один}) = 1 - P(\text{жоден}) = 1 - 0.005 = 0.995$.
+\textbf{Відповідь:} а) 0.14; б) 0.995.
+
+\begin{problem}{8}
+Серед 100 лотерейних білетів є 5 виграшних. Знайти ймовірність того, що 2 наугад витягнутих білети будуть виграшними.
+\end{problem}
+\textbf{Розв'язання:}
+$n = C_{100}^{2} = 4950$.
+$k = C_{5}^{2} \cdot C_{95}^{0} = 10 \cdot 1 = 10$.
+$$p(A) = \frac{k}{n} = \frac{10}{4950} = \frac{1}{495}$$
+\textbf{Відповідь:} 1/495.
+
+\begin{problem}{9}
+... $p = 1/7$. Купивши 5 білетів, знайти: а) виграти по всім 5; б) не виграти по жодному; в) виграти хоча б по одному.
+\end{problem}
+\textbf{Розв'язання:}
+$p = 1/7$, $q = 6/7$, $n=5$.
+а) $P(A) = p^5 = (1/7)^5 = \frac{1}{16807}$.
+б) $P(B) = q^5 = (6/7)^5 = \frac{7776}{16807}$.
+в) $P(C) = 1 - P(B) = 1 - \frac{7776}{16807} = \frac{9031}{16807}$.
+\textbf{Відповідь:} а) 1/16807; б) 7776/16807; в) 9031/16807.
+
+\begin{problem}{10}
+3 питання. $P(Q1) = 0.9$, $P(Q2) = 0.9$, $P(Q3) = 0.8$. Знайти: а) складе (всі 3); б) складе (хоча б 2).
+\end{problem}
+\textbf{Розв'язання:}
+а) $P(A) = P(Q1) \cdot P(Q2) \cdot P(Q3) = 0.9 \cdot 0.9 \cdot 0.8 = 0.648$.
+б) $P(\text{Рівно 2}) = (0.9 \cdot 0.9 \cdot 0.2) + (0.9 \cdot 0.1 \cdot 0.8) + (0.1 \cdot 0.9 \cdot 0.8) = 0.162 + 0.072 + 0.072 = 0.306$.
+$P(B) = P(\text{Рівно 2}) + P(\text{Рівно 3}) = 0.306 + 0.648 = 0.954$.
+\textbf{Відповідь:} а) 0.648; б) 0.954.
+
+\subsection*{Практична робота № 4. Схема Бернуллі}
+\small(Задачі 6, 7, 8, 9, 10)
+
+\begin{problem}{6}
+$n = 900$, $p = 0.8$. Знайти: а) $k = 750$; б) $k = 710$; в) $k \in [710, 740]$.
+\end{problem}
+\textbf{Розв'язання:}
+$np = 720$, $npq = 144$, $\sqrt{npq} = 12$. Використовуємо формули Лапласа.
+а) $x = \frac{750 - 720}{12} = 2.5$.
+$P_{900}(750) \approx \frac{1}{12} \phi(2.5) \approx \frac{1}{12} \cdot 0.0175 \approx 0.00146$.
+б) $x = \frac{710 - 720}{12} \approx -0.83$.
+$P_{900}(710) \approx \frac{1}{12} \phi(-0.83) \approx \frac{1}{12} \cdot 0.2827 \approx 0.0236$.
+в) $x_1 = -0.83$, $x_2 = \frac{740 - 720}{12} \approx 1.67$.
+$P \approx \Phi(1.67) - \Phi(-0.83) = \Phi(1.67) + \Phi(0.83) \approx 0.4525 + 0.2967 = 0.7492$.
+\textbf{Відповідь:} а) 0.00146; б) 0.0236; в) 0.7492.
+
+\begin{problem}{7}
+$p = 0.02$, $n = 1000$. Оцінити $P(|\frac{k}{n} - p| < 0.01)$.
+\end{problem}
+\textbf{Розв'язання:}
+$P \approx 2\Phi(\epsilon \sqrt{\frac{n}{pq}}) = 2\Phi(0.01 \sqrt{\frac{1000}{0.02 \cdot 0.98}})$
+$P \approx 2\Phi(0.01 \sqrt{51020.4}) \approx 2\Phi(2.26) \approx 2 \cdot 0.4881 = 0.9762$.
+\textbf{Відповідь:} 0.9762.
+
+\begin{problem}{8}
+$p=0.0016$, $n=10000$. Знайти $P(k \ge 1)$.
+\end{problem}
+\textbf{Розв'язання:}
+Використовуємо формулу Пуассона. $\lambda = np = 10000 \cdot 0.0016 = 16$.
+$$P(k \ge 1) = 1 - P(k=0)$$
+$$P(k=0) = \frac{16^0 e^{-16}}{0!} = e^{-16} \approx 0.0000001125$$
+$$P(k \ge 1) = 1 - e^{-16} \approx 0.9999998875$$
+\textbf{Відповідь:} $\approx 1$.
+
+\begin{problem}{9}
+$n = 400$, $p = 0.01$. Знайти: а) $P(k=5)$; б) $P(k \le 4)$; в) $P(k \ge 3)$.
+\end{problem}
+\textbf{Розв'язання:}
+$\lambda = np = 4$. $e^{-4} \approx 0.018316$.
+а) $P(5) = \frac{4^5 e^{-4}}{5!} = \frac{1024 \cdot 0.018316}{120} \approx 0.1563$.
+б) $P(k \le 4) = P(0) + P(1) + P(2) + P(3) + P(4) \approx 0.0183 + 0.0733 + 0.1465 + 0.1954 + 0.1954 \approx 0.6288$.
+в) $P(k \ge 3) = 1 - P(k \le 2) = 1 - (P(0) + P(1) + P(2)) \approx 1 - (0.0183 + 0.0733 + 0.1465) \approx 0.7619$.
+\textbf{Відповідь:} а) 0.1563; б) 0.6288; в) 0.7619.
+
+\begin{problem}{10}
+$p=0.1$, $n=400$. Знайти $P(|\frac{k}{n} - p| \le 0.03)$.
+\end{problem}
+\textbf{Розв'язання:}
+$P \approx 2\Phi(\epsilon \sqrt{\frac{n}{pq}}) = 2\Phi(0.03 \sqrt{\frac{400}{0.1 \cdot 0.9}})$
+$P \approx 2\Phi(0.03 \sqrt{\frac{400}{0.09}}) = 2\Phi(0.03 \cdot \frac{20}{0.3}) = 2\Phi(2)$.
+$$P \approx 2 \cdot 0.4772 = 0.9544$$
+\textbf{Відповідь:} 0.9544.
+
+\newpage
+\section*{Частина 2: Методичні вказівки}
+
+\subsection*{Практична робота № 1. Закони розподілу...}
+\small(Задачі 6, 7, 8, 9, 10)
+
+\begin{problem}{6}
+Два стрілки... $p_1=0.5$, $p_2=0.4$. Х – кількість влучень. Виконати повний аналіз.
+\end{problem}
+\textbf{Розв'язання:}
+\textbf{1. Закон розподілу:} $P(X=0) = 0.5 \cdot 0.6 = 0.3$.
+$P(X=1) = (0.5 \cdot 0.6) + (0.5 \cdot 0.4) = 0.5$.
+$P(X=2) = 0.5 \cdot 0.4 = 0.2$.
+\begin{center}
+\begin{tabular}{c|ccc}
+$X=x_i$ & 0 & 1 & 2 \\ \hline
+$p_i$ & 0.3 & 0.5 & 0.2
+\end{tabular}
+\end{center}
+\textbf{6. $M(x), D(x), \sigma(x)$:}
+$M(x) = (0 \cdot 0.3) + (1 \cdot 0.5) + (2 \cdot 0.2) = 0.9$.
+$M(x^2) = (0^2 \cdot 0.3) + (1^2 \cdot 0.5) + (2^2 \cdot 0.2) = 1.3$.
+$D(x) = M(x^2) - [M(x)]^2 = 1.3 - 0.81 = 0.49$.
+$\sigma(x) = \sqrt{0.49} = 0.7$.
+\textbf{7. Асиметрія та Ексцес:}
+$\mu_3 = \sum (x_i - 0.9)^3 p_i = (-0.729)\cdot 0.3 + (0.001)\cdot 0.5 + (1.331)\cdot 0.2 = 0.048$.
+$\mu_4 = \sum (x_i - 0.9)^4 p_i = (0.6561)\cdot 0.3 + (0.0001)\cdot 0.5 + (1.7716)\cdot 0.2 \approx 0.5512$.
+$A_s = \frac{\mu_3}{\sigma^3} = \frac{0.048}{0.7^3} \approx 0.1399$.
+$E_k = \frac{\mu_4}{\sigma^4} - 3 = \frac{0.5512}{0.7^4} - 3 \approx 2.2957 - 3 = -0.7043$.
+\textbf{4. Ймовірності:}
+$P(1 \le x \le 3) = P(X=1) + P(X=2) = 0.5 + 0.2 = 0.7$.
+$P(x > 3) = 0$.
+\textbf{2. $F(x)$ та $f(x)$:}
+$$ F(x) = \begin{cases} 0, & x \le 0 \\ 0.3, & 0 < x \le 1 \\ 0.8, & 1 < x \le 2 \\ 1.0, & x > 2 \end{cases} $$
+$$ F(x) = 0.3 H(x) + 0.5 H(x-1) + 0.2 H(x-2) $$
+$$ f(x) = 0.3 \delta(x) + 0.5 \delta(x-1) + 0.2 \delta(x-2) $$
+\textbf{3, 5. Графіки:} (Опускаємо в LaTeX, описуються як сходинки та імпульси).
+
+\begin{problem}{7}
+НВВ Х $\sim U(a, b)$. Вивести $F(x)$, $M(x)$, $D(x)$, $A_s$, $E_x$, $P(\alpha \le X \le b)$.
+\end{problem}
+\textbf{Розв'язання:} $f(x) = \frac{1}{b-a}$ для $x \in [a, b]$.
+1. $F(x) = \int_{a}^{x} \frac{1}{b-a} dt = \frac{x-a}{b-a}$ (для $x \in [a, b]$).
+2. $M(x) = \int_{a}^{b} \frac{x}{b-a} dx = \frac{1}{b-a} [\frac{x^2}{2}]_{a}^{b} = \frac{b^2-a^2}{2(b-a)} = \frac{a+b}{2}$.
+3. $M(x^2) = \int_{a}^{b} \frac{x^2}{b-a} dx = \frac{b^3-a^3}{3(b-a)} = \frac{a^2+ab+b^2}{3}$.
+$D(x) = M(x^2) - [M(x)]^2 = \frac{a^2+ab+b^2}{3} - \frac{a^2+2ab+b^2}{4} = \frac{(b-a)^2}{12}$.
+4. $A_s = 0$ (розподіл симетричний).
+5. $E_x = -1.2$ (стандартний результат).
+6. $P(\alpha \le X \le b) = \int_{\alpha}^{b} \frac{1}{b-a} dx = \frac{b-\alpha}{b-a}$ (для $a \le \alpha \le b$).
+
+\begin{problem}{8}
+НВВ Х $\sim E(\lambda)$. $f(x)=\lambda e^{-\lambda x}$. Вивести $F(x)$, $M(x)$, $D(x)$, $P(\alpha \le X \le b)$.
+\end{problem}
+\textbf{Розв'язання:}
+1. $F(x) = \int_{0}^{x} \lambda e^{-\lambda t} dt = [-e^{-\lambda t}]_{0}^{x} = 1 - e^{-\lambda x}$ (для $x \ge 0$).
+2. $M(x) = \int_{0}^{\infty} x \lambda e^{-\lambda x} dx = \frac{1}{\lambda}$.
+3. $M(x^2) = \int_{0}^{\infty} x^2 \lambda e^{-\lambda x} dx = \frac{2}{\lambda^2}$.
+$D(x) = M(x^2) - [M(x)]^2 = \frac{2}{\lambda^2} - (\frac{1}{\lambda})^2 = \frac{1}{\lambda^2}$.
+4. $P(\alpha \le X \le b) = \int_{\alpha}^{b} \lambda e^{-\lambda x} dx = [-e^{-\lambda x}]_{\alpha}^{b} = e^{-\lambda \alpha} - e^{-\lambda b}$.
+
+\begin{problem}{9}
+Розподіл Коші. $f(x)=\frac{c}{1+x^{2}}$. Знайти $c$, $F(x)$, $P(-1 \le X \le 1)$.
+\end{problem}
+\textbf{Розв'язання:}
+1. $\int_{-\infty}^{\infty} \frac{c}{1+x^2} dx = c [\arctan(x)]_{-\infty}^{\infty} = c (\frac{\pi}{2} - (-\frac{\pi}{2})) = c\pi = 1 \implies c = 1/\pi$.
+2. $F(x) = \int_{-\infty}^{x} \frac{1/\pi}{1+t^2} dt = \frac{1}{\pi} [\arctan(t)]_{-\infty}^{x} = \frac{1}{\pi} (\arctan(x) + \frac{\pi}{2}) = \frac{1}{\pi}\arctan(x) + \frac{1}{2}$.
+3. $P(-1 \le X \le 1) = \int_{-1}^{1} \frac{1/\pi}{1+x^2} dx = \frac{1}{\pi} [\arctan(x)]_{-1}^{1} = \frac{1}{\pi} (\frac{\pi}{4} - (-\frac{\pi}{4})) = \frac{1}{\pi}(\frac{\pi}{2}) = \frac{1}{2}$.
+
+\begin{problem}{10}
+$f(x)=c \cdot \cos(x)$ для $x \in [-\pi/2, \pi/2]$. Знайти $c$, $F(x)$, $P(|X| \le \pi/4)$.
+\end{problem}
+\textbf{Розв'язання:}
+1. $\int_{-\pi/2}^{\pi/2} c \cos(x) dx = c [\sin(x)]_{-\pi/2}^{\pi/2} = c(1 - (-1)) = 2c = 1 \implies c = 1/2$.
+2. $F(x) = \int_{-\pi/2}^{x} \frac{1}{2} \cos(t) dt = \frac{1}{2} [\sin(t)]_{-\pi/2}^{x} = \frac{1}{2}(\sin(x) + 1)$.
+3. $P(|X| \le \pi/4) = \int_{-\pi/4}^{\pi/4} \frac{1}{2} \cos(x) dx = \frac{1}{2} [\sin(x)]_{-\pi/4}^{\pi/4} = \frac{1}{2}(\frac{\sqrt{2}}{2} - (-\frac{\sqrt{2}}{2})) = \frac{\sqrt{2}}{2}$.
+
+\subsection*{Практична робота № 2. Закони розподілу функцій}
+\small(Задачі 6, 7, 8, 9, 10)
+
+\begin{problem}{6}
+X $\sim E(\lambda=5)$. Встановити закон розподілу $Z=min(X)$.
+\end{problem}
+\textbf{Розв'язання:}
+$F(x) = 1 - e^{-5x}$. $f(x) = 5e^{-5x}$.
+Формула для $f(X_{min})$ з $n$ вибірок:
+$$f(Z) = n \cdot (1 - F(x))^{n-1} \cdot f(x) = n \cdot (1 - (1 - e^{-5x}))^{n-1} \cdot (5e^{-5x})$$
+$$f(Z) = n \cdot (e^{-5x})^{n-1} \cdot (5e^{-5x}) = 5n \cdot e^{-5x(n-1)} \cdot e^{-5x} = (5n) e^{-(5n)x}$$
+\textbf{Відповідь:} $Z \sim E(\lambda_{Z} = 5n)$.
+
+\begin{problem}{7}
+Знайти $Z=X+Y$, $X\sim N(a;\sigma^{2})$, $Y\sim E(\lambda)$.
+\end{problem}
+\textbf{Розв'язання:}
+Формула згортки: $f_Z(t) = \int_{-\infty}^{\infty} f_X(u) \cdot f_Y(t-u) du$.
+$f_X(u) = \frac{1}{\sigma\sqrt{2\pi}} \exp(-\frac{(u-a)^2}{2\sigma^2})$.
+$f_Y(t-u) = \lambda e^{-\lambda (t-u)}$ (де $u \le t$).
+$$f_Z(t) = \int_{-\infty}^{t} \frac{\lambda}{\sigma\sqrt{2\pi}} \exp\left(-\frac{(u-a)^2}{2\sigma^2} - \lambda(t-u)\right) du$$
+\textbf{Відповідь:} Інтеграл згортки не спрощується до елементарної функції.
+
+\begin{problem}{8}
+Знайти $Z=X+Y$, $X\sim N(a_{1};\sigma_{1}^{2})$, $Y\sim N(a_{2};\sigma_{2}^{2})$.
+\end{problem}
+\textbf{Розв'язання:}
+Сума двох незалежних нормальних величин є нормальною величиною.
+$M(Z) = M(X) + M(Y) = a_1 + a_2$.
+$D(Z) = D(X) + D(Y) = \sigma_1^2 + \sigma_2^2$.
+\textbf{Відповідь:} $Z \sim N(a_1+a_2; \sigma_1^2+\sigma_2^2)$.
+
+\begin{problem}{9}
+Знайти $Z=X+Y$, $X\sim N(a;\sigma^{2})$, $Y\sim U(a;b)$.
+\end{problem}
+\textbf{Розв'язання:}
+Згортка: $f_Y(t-u) = \frac{1}{b-a}$ (де $t-b \le u \le t-a$).
+$$f_Z(t) = \int_{t-b}^{t-a} \left( \frac{1}{\sigma\sqrt{2\pi}} e^{\frac{-(u-a)^2}{2\sigma^2}} \right) \cdot \left( \frac{1}{b-a} \right) du$$
+$$f_Z(t) = \frac{1}{(b-a)\sigma\sqrt{2\pi}} \int_{t-b}^{t-a} e^{\frac{-(u-a)^2}{2\sigma^2}} du$$
+\textbf{Відповідь:} $f_Z(t) = \frac{1}{b-a} \left[ \Phi\left(\frac{t-a-a}{\sigma}\right) - \Phi\left(\frac{t-b-a}{\sigma}\right) \right]$.
+
+\begin{problem}{10}
+Знайти $Z=X+Y$, $X\sim U(a;b)$, $Y\sim U(a;b)$.
+\end{problem}
+\textbf{Розв'язання:}
+Результатом є трикутний розподіл (Сімпсона) на $[2a, 2b]$.
+$$ f_Z(t) = \begin{cases} \frac{t - 2a}{(b-a)^2}, & 2a \le t \le a+b \\ \frac{2b - t}{(b-a)^2}, & a+b < t \le 2b \\ 0, & \text{в інших випадках} \end{cases} $$
+\textbf{Відповідь:} Розподіл Z є трикутним з піком в $t = a+b$.
+
+\subsection*{Практична робота № 3. СМО. Ланцюги Маркова}
+\small(Задачі 6, 7)
+
+\begin{problem}{6}
+Задано матрицю $P_{1}=\begin{pmatrix} 0.7 & 0.3 \\ 0.4 & 0.6 \end{pmatrix}$. Знайти $P_{2}$.
+\end{problem}
+\textbf{Розв'язання:}
+$P_2 = P_1^2 = \begin{pmatrix} 0.7 & 0.3 \\ 0.4 & 0.6 \end{pmatrix} \cdot \begin{pmatrix} 0.7 & 0.3 \\ 0.4 & 0.6 \end{pmatrix}$
+$$ P_2 = \begin{pmatrix} (0.49 + 0.12) & (0.21 + 0.18) \\ (0.28 + 0.24) & (0.12 + 0.36) \end{pmatrix} = \begin{pmatrix} 0.61 & 0.39 \\ 0.52 & 0.48 \end{pmatrix} $$
+\textbf{Відповідь:} $P_{2}=\begin{pmatrix} 0.61 & 0.39 \\ 0.52 & 0.48 \end{pmatrix}$.
+
+\begin{problem}{7}
+...СМО... $n=4$, $\lambda=1$, $\mu=2$. Знайти $P_{зан}, P_0, A, w, T_{обc}, T_{відг}$.
+\end{problem}
+\textbf{Розв'язання:}
+1. Рівняння Колмогорова:
+$4\lambda P_0 = \mu P_1 \implies 4P_0 = 2P_1$
+$3\lambda P_1 = \mu P_2 \implies 3P_1 = 2P_2$
+$2\lambda P_2 = \mu P_3 \implies 2P_2 = 2P_3$
+$1\lambda P_3 = \mu P_4 \implies P_3 = 2P_4$
+2. $\sum P_j = 1$. Виражаємо через $P_0$:
+$P_1 = 2 P_0$
+$P_2 = \frac{3}{2} P_1 = 3 P_0$
+$P_3 = P_2 = 3 P_0$
+$P_4 = \frac{1}{2} P_3 = 1.5 P_0$
+$P_0 + 2P_0 + 3P_0 + 3P_0 + 1.5P_0 = 1 \implies 10.5 P_0 = 1 \implies P_0 = 2/21$.
+3. $P_0 = 2/21 \approx 0.0952$.
+$P_1 = 4/21$, $P_2 = 6/21$, $P_3 = 6/21$, $P_4 = 3/21$.
+4. Характеристики:
+$P_{зан} = 1 - P_0 = 19/21 \approx 0.9048$.
+$A = (1 - P_0) \cdot \mu = (19/21) \cdot 2 = 38/21 \approx 1.8095$.
+$w = \sum j \cdot P_j = 1(4/21) + 2(6/21) + 3(6/21) + 4(3/21) = \frac{4+12+18+12}{21} = 46/21 \approx 2.19$.
+$T_{обc} = 1 / \mu = 1 / 2 = 0.5$.
+$T_{відг} = w \cdot T_{обc} = (46/21) \cdot 0.5 = 23/21 \approx 1.095$.
+\textbf{Відповідь:} $P_0 \approx 0.095$, $P_{зан} \approx 0.905$, $A \approx 1.81$, $w \approx 2.19$, $T_{обc} = 0.5$, $T_{відг} \approx 1.095$.
+
+\subsection*{Практична робота № 4. Основи вибіркового методу}
+\small(Варіант 6: [4 4 4 2 5])
+
+**Вибірка:** $X = (4, 4, 4, 2, 5)$. $n=5$.
+**Варіаційний ряд:** $\alpha = (2, 4, 4, 4, 5)$.
+**Статистичний розподіл:**
+\begin{center}
+\begin{tabular}{c|ccc}
+$x_i$ & 2 & 4 & 5 \\ \hline
+$m_i$ & 1 & 3 & 1 \\
+$\omega_i$ & 0.2 & 0.6 & 0.2
+\end{tabular}
+\end{center}
+**$F_n^*(x)$:**
+$$ F_n^*(x) = \begin{cases} 0, & x \le 2 \\ 0.2, & 2 < x \le 4 \\ 0.8, & 4 < x \le 5 \\ 1, & x > 5 \end{cases} $$
+\textbf{Міри центральної тенденції:}
+Медіана $\tilde{M}e = \alpha_3 = 4$.
+Середнє $\overline{x} = (2 \cdot 0.2) + (4 \cdot 0.6) + (5 \cdot 0.2) = 3.8$.
+Мода $Mo = 4$.
+
+\textbf{Міри розсіювання:}
+Розмах $R = 5 - 2 = 3$.
+Виправлена дисперсія $s^2 = \frac{1}{4} [ (2-3.8)^2 \cdot 1 + (4-3.8)^2 \cdot 3 + (5-3.8)^2 \cdot 1 ] = \frac{1}{4} [ 3.24 + 0.12 + 1.44 ] = 1.2$.
+Виправлене СКВ $s = \sqrt{1.2} \approx 1.0954$.
+MAE $= \frac{1}{5} [ |2-3.8| \cdot 1 + |4-3.8| \cdot 3 + |5-3.8| \cdot 1 ] = \frac{3.6}{5} = 0.72$.
+
+\textbf{Міри форми:}
+$\mu_3' = \sum (x_i - \overline{x})^3 n_i = (-1.8)^3 \cdot 1 + (0.2)^3 \cdot 3 + (1.2)^3 \cdot 1 = -4.08$.
+$\tilde{A}_s = \frac{n}{(n-1)(n-2)} \frac{\mu_3'}{s^3} = \frac{5}{12} \frac{-4.08}{(1.0954)^3} \approx -1.294$.
+$z_1 = \frac{\tilde{A}_s}{\sqrt{6/n}} = \frac{-1.294}{\sqrt{1.2}} \approx -1.181$.
+$\mu_4' = \sum (x_i - \overline{x})^4 n_i = (-1.8)^4 \cdot 1 + (0.2)^4 \cdot 3 + (1.2)^4 \cdot 1 = 12.576$.
+$\mu_4 = \mu_4' / n = 2.5152$.
+$\tilde{E}_k \approx \frac{\mu_4}{s^4} - 3 = \frac{2.5152}{(1.2)^2} - 3 \approx 1.7467 - 3 = -1.2533$.
+$z_2 = \frac{\tilde{E}_k}{\sqrt{24/n}} = \frac{-1.2533}{\sqrt{4.8}} \approx -0.572$.
+
+\textbf{Інтервальні оцінки ($\gamma = 0.95$):}
+Інтервал для $a$: $t(0.95, 5) = 2.776$.
+$3.8 \pm \frac{2.776 \cdot 1.0954}{\sqrt{5}} \implies 3.8 \pm 1.3599 \implies [2.440, 5.160]$.
+Інтервал для $\sigma^2$: $\chi^2_{0.025}(4) = 11.143$, $\chi^2_{0.975}(4) = 0.484$.
+$\left( \frac{4 \cdot 1.2}{11.143}, \frac{4 \cdot 1.2}{0.484} \right) \implies [0.4308, 9.917]$.
+
+\end{document}
